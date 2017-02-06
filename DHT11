@@ -1,0 +1,30 @@
+#include <dht11.h> // dht11 kütüphanesini ekliyoruz.
+#define DHT11PIN 2 // DHT11PIN olarak Dijital 2"yi belirliyoruz.
+
+dht11 DHT11;
+
+void setup()
+{
+  Serial.begin(9600); // Seri iletişimi başlatıyoruz.
+  Serial.println("ARDUINO HOCAM DHT11 TERMOMETRESI");
+}
+
+void loop()
+{
+  
+  Serial.println(); // bir satır aşağı indik.
+ 
+  int X = DHT11.read(DHT11PIN); 
+
+  // Sensörden gelen verileri yazdırıyoruz.
+  Serial.print("Nem (%): ");
+  Serial.println((float)DHT11.humidity, 2);
+
+  Serial.print("Sicaklik ^C ");
+  Serial.println((float)DHT11.temperature, 2);
+
+
+  
+  delay(2000);//2 SANİYEDE BİR BİLGİLERİ GÜNCELLEYECEK.
+
+}
